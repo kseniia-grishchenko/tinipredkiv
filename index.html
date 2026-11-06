@@ -1,11 +1,328 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk" class="i18n-pending">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TINI NEZABUTYKH PREDKIV</title>
+    <title>Тіні незабутих предків — генеалогічні дослідження</title>
+    <meta name="description" content="Генеалогічні дослідження та відновлення історії вашого роду: пошук архівних документів, побудова родоводу, консультації.">
+    <link rel="canonical" href="https://tinipredkiv.com/">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="uk_UA">
+    <meta property="og:site_name" content="Тіні незабутих предків">
+    <meta property="og:title" content="Тіні незабутих предків — генеалогічні дослідження">
+    <meta property="og:description" content="Генеалогічні дослідження та відновлення історії вашого роду: пошук архівних документів, побудова родоводу, консультації.">
+    <meta property="og:url" content="https://tinipredkiv.com/">
+    <meta property="og:image" content="https://tinipredkiv.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..700&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap">
+
+    <link rel="preload" href="locales/uk.json" as="fetch" type="application/json" crossorigin>
+    <link rel="preload" href="images/hero-1536.webp" as="image" type="image/webp" media="(min-width: 900px)">
+
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/i18n.js" defer></script>
+    <script src="js/cards.js" defer></script>
+    <script src="js/form.js" defer></script>
   </head>
-  <body>
-    <h1>TINI NEZABUTYKH PREDKIV</h1>
+  <body id="top">
+    <a class="skip-link" href="#main" data-i18n="header.skip"></a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="logo" href="#top" data-i18n-attr="aria-label=header.logoLabel">
+          <img class="logo__mark" src="images/logo.svg" width="40" height="40" alt="">
+          <span class="logo__text" data-i18n="header.logo"></span>
+        </a>
+
+        <nav class="nav" data-i18n-attr="aria-label=header.navLabel">
+          <ul class="nav__list">
+            <li><a class="nav__link" href="#services" data-i18n="header.nav.services"></a></li>
+            <li><a class="nav__link" href="#about" data-i18n="header.nav.about"></a></li>
+            <li><a class="nav__link" href="#reviews" data-i18n="header.nav.reviews"></a></li>
+            <li><a class="nav__link" href="#contact" data-i18n="header.nav.contact"></a></li>
+          </ul>
+        </nav>
+
+        <a class="button" href="#contact" data-i18n="header.cta"></a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <h1 class="hero__title" data-i18n-html="hero.title"></h1>
+
+        <div class="hero__media">
+          <img
+            class="hero__img"
+            src="images/hero-1536.webp"
+            srcset="images/hero-1024.webp 1024w, images/hero-1536.webp 1536w"
+            sizes="(min-width: 900px) 1550px, 490px"
+            width="1536"
+            height="1024"
+            fetchpriority="high"
+            decoding="async"
+            alt=""
+            data-i18n-attr="alt=hero.imageAlt">
+        </div>
+
+        <a class="hero__scroll" href="#services" data-i18n-attr="aria-label=hero.scrollLabel">
+          <img src="images/chevron-1.svg" width="50" height="50" alt="">
+          <img src="images/chevron-2.svg" width="50" height="50" alt="">
+          <img src="images/chevron-3.svg" width="50" height="50" alt="">
+        </a>
+      </section>
+
+      <section class="section services" id="services">
+        <div class="container">
+          <h2 class="section__title" data-i18n-html="services.title"></h2>
+
+          <ul class="card-track" data-slider>
+            <li>
+              <article class="service">
+                <div class="service__main">
+                  <img class="service__icon" src="images/icon-search.svg" width="44" height="44" alt="">
+                  <div class="service__text">
+                    <h3 class="service__title" data-i18n-html="services.archive.title"></h3>
+                    <p class="service__body" data-clamp data-i18n="services.archive.text"></p>
+                  </div>
+                </div>
+                <p class="service__price" data-i18n="services.archive.price"></p>
+              </article>
+            </li>
+
+            <li>
+              <article class="service">
+                <div class="service__main">
+                  <span class="service__icon service__icon--circle">
+                    <img src="images/icon-tree-diagram.svg" width="24" height="24" alt="">
+                  </span>
+                  <div class="service__text">
+                    <h3 class="service__title" data-i18n-html="services.tree.title"></h3>
+                    <p class="service__body" data-clamp data-i18n="services.tree.text"></p>
+                  </div>
+                </div>
+                <p class="service__price" data-i18n="services.tree.price"></p>
+              </article>
+            </li>
+
+            <li>
+              <article class="service">
+                <div class="service__main">
+                  <span class="service__icon service__icon--circle">
+                    <img src="images/icon-support.svg" width="24" height="24" alt="">
+                  </span>
+                  <div class="service__text">
+                    <h3 class="service__title" data-i18n-html="services.consultation.title"></h3>
+                    <p class="service__body" data-clamp data-i18n="services.consultation.text"></p>
+                  </div>
+                </div>
+                <p class="service__price" data-i18n="services.consultation.price"></p>
+              </article>
+            </li>
+          </ul>
+
+          <div class="slider-controls">
+            <button class="slider-controls__btn slider-controls__btn--prev" type="button" data-slider-prev data-i18n-attr="aria-label=services.prev">
+              <img src="images/arrow-right.svg" width="40" height="40" alt="">
+            </button>
+            <button class="slider-controls__btn" type="button" data-slider-next data-i18n-attr="aria-label=services.next">
+              <img src="images/arrow-right.svg" width="40" height="40" alt="">
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="container about__grid">
+          <div class="about__content">
+            <h2 class="section__title about__title" data-i18n-html="about.title"></h2>
+            <p class="about__text" data-i18n="about.text"></p>
+
+            <ul class="about__badges">
+              <li class="badge">
+                <img class="badge__icon" src="images/icon-world.svg" width="32" height="32" alt="">
+                <p class="badge__text" data-i18n-html="about.experience"></p>
+              </li>
+              <li class="badge">
+                <img class="badge__icon" src="images/icon-archive.svg" width="32" height="32" alt="">
+                <p class="badge__text" data-i18n-html="about.archives"></p>
+              </li>
+              <li class="badge">
+                <img class="badge__icon" src="images/icon-user-love.svg" width="32" height="32" alt="">
+                <p class="badge__text" data-i18n-html="about.approach"></p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="about__photo">
+            <img src="images/about-portrait.webp" width="1016" height="1046" loading="lazy" alt="" data-i18n-attr="alt=about.photoAlt">
+          </div>
+        </div>
+      </section>
+
+      <section class="section reviews" id="reviews">
+        <div class="container">
+          <h2 class="section__title" data-i18n-html="reviews.title"></h2>
+
+          <ul class="card-track" data-slider>
+            <li>
+              <article class="review">
+                <div class="review__main">
+                  <div class="review__head">
+                    <div class="review__author">
+                      <img class="review__avatar" src="images/avatar.webp" width="44" height="44" loading="lazy" alt="">
+                      <p class="review__name" data-i18n="reviews.one.name"></p>
+                    </div>
+                    <div class="review__rating">
+                      <span class="review__stars" role="img" data-i18n-attr="aria-label=reviews.ratingLabel">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                      </span>
+                      <span data-i18n="reviews.one.rating"></span>
+                    </div>
+                  </div>
+                  <p class="review__quote" data-clamp="7/4" data-i18n="reviews.one.text"></p>
+                </div>
+                <p class="review__date" data-i18n="reviews.one.date"></p>
+              </article>
+            </li>
+
+            <li>
+              <article class="review">
+                <div class="review__main">
+                  <div class="review__head">
+                    <div class="review__author">
+                      <img class="review__avatar" src="images/avatar.webp" width="44" height="44" loading="lazy" alt="">
+                      <p class="review__name" data-i18n="reviews.two.name"></p>
+                    </div>
+                    <div class="review__rating">
+                      <span class="review__stars" role="img" data-i18n-attr="aria-label=reviews.ratingLabel">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                      </span>
+                      <span data-i18n="reviews.two.rating"></span>
+                    </div>
+                  </div>
+                  <p class="review__quote" data-clamp="7/4" data-i18n="reviews.two.text"></p>
+                </div>
+                <p class="review__date" data-i18n="reviews.two.date"></p>
+              </article>
+            </li>
+
+            <li>
+              <article class="review">
+                <div class="review__main">
+                  <div class="review__head">
+                    <div class="review__author">
+                      <img class="review__avatar" src="images/avatar.webp" width="44" height="44" loading="lazy" alt="">
+                      <p class="review__name" data-i18n="reviews.three.name"></p>
+                    </div>
+                    <div class="review__rating">
+                      <span class="review__stars" role="img" data-i18n-attr="aria-label=reviews.ratingLabel">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                        <img src="images/star.svg" width="16" height="15" alt="">
+                      </span>
+                      <span data-i18n="reviews.three.rating"></span>
+                    </div>
+                  </div>
+                  <p class="review__quote" data-clamp="7/4" data-i18n="reviews.three.text"></p>
+                </div>
+                <p class="review__date" data-i18n="reviews.three.date"></p>
+              </article>
+            </li>
+          </ul>
+
+          <div class="slider-controls">
+            <button class="slider-controls__btn slider-controls__btn--prev" type="button" data-slider-prev data-i18n-attr="aria-label=reviews.prev">
+              <img src="images/arrow-right.svg" width="40" height="40" alt="">
+            </button>
+            <button class="slider-controls__btn" type="button" data-slider-next data-i18n-attr="aria-label=reviews.next">
+              <img src="images/arrow-right.svg" width="40" height="40" alt="">
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="container">
+          <div class="contact__card">
+            <h2 class="contact__title" data-i18n-html="contact.title"></h2>
+
+            <div class="contact__details">
+              <p class="contact__lines">
+                <a href="#" data-i18n="contact.phone" data-i18n-attr="href=contact.phoneHref"></a>
+                <a href="#" data-i18n="contact.email" data-i18n-attr="href=contact.emailHref"></a>
+              </p>
+              <ul class="contact__social">
+                <li>
+                  <a href="#" data-i18n-attr="href=contact.instagramHref;aria-label=contact.instagramLabel">
+                    <img src="images/icon-instagram.svg" width="44" height="44" alt="">
+                  </a>
+                </li>
+                <li>
+                  <a href="#" data-i18n-attr="href=contact.facebookHref;aria-label=contact.facebookLabel">
+                    <img src="images/icon-facebook.svg" width="44" height="44" alt="">
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="contact__formwrap">
+              <form class="contact__form" name="consultation" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+                <input type="hidden" name="form-name" value="consultation">
+                <p class="visually-hidden">
+                  <label>Do not fill this in: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                </p>
+
+                <div class="field-group">
+                  <label class="visually-hidden" for="contact-name" data-i18n="contact.form.name"></label>
+                  <input class="field" id="contact-name" name="name" type="text" autocomplete="name" required aria-describedby="contact-name-error" data-i18n-attr="placeholder=contact.form.name">
+                  <p class="field__error" id="contact-name-error" hidden></p>
+                </div>
+
+                <div class="field-group">
+                  <label class="visually-hidden" for="contact-email" data-i18n="contact.form.email"></label>
+                  <input class="field" id="contact-email" name="email" type="email" autocomplete="email" required aria-describedby="contact-email-error" data-i18n-attr="placeholder=contact.form.email">
+                  <p class="field__error" id="contact-email-error" hidden></p>
+                </div>
+
+                <button class="contact__submit" type="submit" data-i18n="contact.form.submit"></button>
+                <p class="contact__status" role="status" hidden></p>
+              </form>
+
+              <div class="contact__success" tabindex="-1" hidden>
+                <p class="contact__success-title" data-i18n="contact.form.successTitle"></p>
+                <p data-i18n="contact.form.successText"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-i18n="footer.copyright"></p>
+    </footer>
   </body>
 </html>

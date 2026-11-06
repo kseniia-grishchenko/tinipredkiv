@@ -1,0 +1,1013 @@
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--color-brand);
+  background: var(--color-snow);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+em {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+/* Hide translatable text until the translation file has been applied. */
+.i18n-pending [data-i18n],
+.i18n-pending [data-i18n-html] {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-snow);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: var(--page-max);
+  height: var(--header-h);
+  margin-inline: auto;
+  padding: 16px var(--gutter);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+
+.logo__mark {
+  width: 30px;
+  height: 30px;
+  transform: scaleY(-1); /* the exported mark is mirrored, as in Figma */
+}
+
+.logo__text {
+  max-inline-size: 7.5em; /* wraps like the design, and stays flexible for longer translations */
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.nav {
+  display: none;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 18px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.nav__link {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.nav__link:hover {
+  border-bottom-color: currentColor;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-brand);
+  color: var(--color-snow);
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.88;
+}
+
+@media (min-width: 900px) {
+  .site-header__inner {
+    gap: 80px;
+  }
+
+  .logo {
+    gap: 12px;
+  }
+
+  .logo__mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo__text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .nav {
+    display: block;
+    flex: 1 0 0;
+    min-width: 0;
+  }
+
+  .button {
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Mobile: title sits above the photo, dark on white. */
+.hero__title {
+  margin-block: 16px;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* Each line group from the translation is its own block, as in the design. */
+.hero__title > * {
+  display: block;
+}
+
+.hero__media {
+  position: relative;
+  aspect-ratio: 358 / 262;
+  overflow: hidden;
+  border-radius: var(--radius-hero);
+}
+
+/* The photo is cropped the same way as in Figma. */
+.hero__img {
+  position: absolute;
+  top: -25.57%;
+  left: -35.62%;
+  width: 135.52%;
+  max-width: none;
+  height: auto;
+}
+
+.hero__scroll {
+  display: none;
+}
+
+/* Desktop: title is laid over the photo, in white. */
+@media (min-width: 900px) {
+  .hero__title {
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    left: calc(var(--gutter) + 100px);
+    right: calc(var(--gutter) + 100px);
+    margin: 0;
+    color: var(--color-snow);
+    font-size: clamp(36px, 4.7vw, 60px);
+  }
+
+  .hero__media {
+    aspect-ratio: 1208 / 713;
+  }
+
+  .hero__img {
+    top: -35.68%;
+    left: -28.12%;
+    width: 128.12%;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    z-index: 1;
+    bottom: 36px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    transform: translateX(-50%);
+  }
+
+  .hero__scroll img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: -24px;
+  }
+
+  .hero__scroll img:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ---------- Sections (shared) ---------- */
+.hero {
+  margin-bottom: var(--section-gap);
+}
+
+.container {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section__title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  .section__title {
+    margin-bottom: 36px;
+    font-size: 48px;
+  }
+}
+
+/* ---------- Services ---------- */
+/* Mobile: cards form a horizontal carousel, one card per view. */
+.card-track {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.card-track::-webkit-scrollbar {
+  display: none;
+}
+
+.card-track > li {
+  display: flex;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 26px;
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-card);
+  background: var(--color-brand-5);
+  text-align: center;
+}
+
+.service__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.service__icon {
+  width: 44px;
+  height: 44px;
+}
+
+.service__icon--circle {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-brand-10);
+}
+
+.service__icon--circle img {
+  width: 24px;
+  height: 24px;
+}
+
+.service__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.service__title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.service__body {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.service__price {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.slider-controls__btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.slider-controls__btn img {
+  width: 40px;
+  height: 40px;
+}
+
+.slider-controls__btn--prev img {
+  transform: rotate(180deg);
+}
+
+.slider-controls__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (min-width: 900px) {
+  .card-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    overflow: visible;
+  }
+
+  .service {
+    gap: 38px;
+    padding: 32px;
+  }
+
+  .service__title {
+    font-size: 28px;
+  }
+
+  .service__body {
+    font-size: 20px;
+  }
+
+  .service__price {
+    font-size: 18px;
+  }
+
+  .slider-controls {
+    display: none;
+  }
+}
+
+/* ---------- About ---------- */
+.section + .section {
+  margin-top: var(--section-gap);
+}
+
+.about__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about__content {
+  text-align: center;
+}
+
+.about__title {
+  font-weight: 300;
+  text-align: inherit;
+}
+
+.about__text {
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.about__badges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: var(--radius-card);
+  background: var(--color-brand-5);
+  text-align: left;
+}
+
+.badge__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.badge__text {
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+/* Each line group from the translation is its own line, as in the design. */
+.badge__text > * {
+  display: block;
+}
+
+.about__photo {
+  aspect-ratio: 358 / 262;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+}
+
+.about__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+@media (min-width: 900px) {
+  .about__grid {
+    display: grid;
+    grid-template-columns: 600fr 508fr;
+    column-gap: 100px;
+    align-items: start;
+  }
+
+  .about__content {
+    text-align: left;
+  }
+
+  .about__text {
+    margin-bottom: 36px;
+    font-size: 20px;
+  }
+
+  .about__badges {
+    align-items: flex-start;
+  }
+
+  .badge {
+    padding: 16px 24px;
+  }
+
+  .badge__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .badge__text {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .about__photo {
+    aspect-ratio: 508 / 523;
+  }
+
+  .about__photo img {
+    object-position: center;
+  }
+}
+
+/* ---------- Reviews ---------- */
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 70px;
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-card);
+  background: var(--color-brand-5);
+  text-align: center;
+}
+
+.review__main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: left;
+}
+
+.review__author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.review__avatar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.review__name {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.review__rating {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.review__stars {
+  display: flex;
+}
+
+.review__stars img {
+  width: 16px;
+  height: 15px;
+}
+
+.review__quote {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.review__date {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+@media (min-width: 900px) {
+  .review {
+    gap: 46px;
+    padding: 32px;
+  }
+
+  .review__name {
+    font-size: 20px;
+  }
+
+  .review__rating {
+    font-size: 18px;
+  }
+
+  .review__quote {
+    font-size: 20px;
+  }
+
+  .review__date {
+    font-size: 14px;
+  }
+}
+
+/* ---------- Contact ---------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Mobile: title, form, then contact details, all centred. */
+.contact__card {
+  display: grid;
+  grid-template-areas:
+    "title"
+    "form"
+    "details";
+  row-gap: 24px;
+  padding: 40px 16px;
+  border-radius: var(--radius-hero);
+  background: var(--color-brand);
+  color: var(--color-snow);
+  text-align: center;
+}
+
+.contact__title {
+  grid-area: title;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.contact__details {
+  grid-area: details;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.contact__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.contact__lines a:hover {
+  text-decoration: underline;
+}
+
+.contact__social {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact__social img {
+  width: 32px;
+  height: 32px;
+}
+
+.contact__formwrap {
+  grid-area: form;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.field {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-snow-10);
+  color: var(--color-snow);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.field::placeholder {
+  /* a little stronger than Figma's 50% so it passes the 4.5:1 text contrast rule */
+  color: rgb(255 255 255 / 0.62);
+}
+
+.field:focus-visible,
+.contact__submit:focus-visible,
+.contact__card a:focus-visible {
+  outline: 2px solid var(--color-snow);
+  outline-offset: 3px;
+}
+
+.contact__submit {
+  height: 50px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-snow);
+  color: var(--color-brand);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.contact__submit:hover {
+  opacity: 0.9;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 24px var(--gutter);
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .contact__card {
+    grid-template-areas:
+      "title form"
+      "details form";
+    grid-template-columns: 1fr 405px;
+    grid-template-rows: auto 1fr;
+    column-gap: 40px;
+    row-gap: 36px;
+    padding: 60px 60px 56px;
+    text-align: left;
+  }
+
+  .contact__title {
+    font-size: 48px;
+  }
+
+  .contact__details {
+    align-items: flex-start;
+    gap: 36px;
+    margin-top: 0;
+  }
+
+  .contact__lines {
+    gap: 16px;
+    font-size: 18px;
+  }
+
+  .contact__social {
+    gap: 16px;
+  }
+
+  .contact__social img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .contact__formwrap {
+    align-self: start;
+  }
+
+  .contact__form {
+    gap: 24px;
+  }
+
+  .field {
+    height: 66px;
+    padding: 0 32px;
+    font-size: 20px;
+  }
+
+  .contact__submit {
+    height: 59px;
+    margin-top: 16px;
+    font-size: 18px;
+  }
+
+  .site-footer {
+    padding-block: 36px;
+  }
+}
+
+/* ---------- In-between screen sizes ---------- */
+
+/* Columns may shrink below their content, so nothing pushes the page wider than the screen. */
+@media (min-width: 900px) {
+  .card-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .review__head {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .contact__title {
+    font-size: clamp(32px, 4.2vw, 48px);
+  }
+}
+
+/* Narrow desktop / landscape tablet: slightly tighter cards. */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .service,
+  .review {
+    padding: 24px;
+  }
+
+  .service__title {
+    font-size: 24px;
+  }
+
+  .service__body,
+  .review__quote {
+    font-size: 17px;
+  }
+
+  .about__text {
+    font-size: 17px;
+  }
+
+  .about__grid {
+    column-gap: 48px;
+  }
+
+  .contact__card {
+    padding: 40px;
+  }
+}
+
+/* Tablet portrait: carousels show two cards at a time, long text stays readable. */
+@media (min-width: 600px) and (max-width: 899px) {
+  .card-track > li {
+    flex-basis: calc((100% - 16px) / 2);
+  }
+
+  .about__text {
+    max-inline-size: 600px;
+    margin-inline: auto;
+    font-size: 16px;
+  }
+
+  .contact__card {
+    padding-inline: 40px;
+  }
+
+  .contact__form {
+    width: 100%;
+    max-inline-size: 480px;
+    margin-inline: auto;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 20;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-brand);
+  color: var(--color-snow);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ---------- Form states ---------- */
+.contact__form[hidden],
+.contact__success[hidden] {
+  display: none;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field:focus {
+  background: rgb(255 255 255 / 0.16);
+}
+
+.field[aria-invalid="true"] {
+  box-shadow: inset 0 0 0 2px #ffb4ab;
+}
+
+.field__error,
+.contact__status {
+  color: #ffb4ab;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.field__error {
+  padding-inline: 16px;
+  text-align: left;
+}
+
+.contact__status {
+  text-align: center;
+}
+
+.contact__submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.contact__success {
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  padding: 24px;
+  border-radius: var(--radius-card);
+  background: var(--color-snow-10);
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.contact__success-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .field__error {
+    padding-inline: 32px;
+  }
+
+  .contact__success {
+    min-height: 255px;
+    font-size: 18px;
+  }
+
+  .contact__success-title {
+    font-size: 24px;
+  }
+}

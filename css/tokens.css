@@ -1,0 +1,33 @@
+/* Design tokens — values come from the Figma file (variables + frames). */
+:root {
+  /* Colors (Figma variables) */
+  --color-brand: #142211;
+  --color-snow: #ffffff;
+  --color-soot: #111111;
+  --color-snow-50: rgb(255 255 255 / 0.5);
+  --color-snow-10: rgb(255 255 255 / 0.1);
+  --color-brand-10: rgb(20 34 17 / 0.1);
+  --color-brand-5: rgb(20 34 17 / 0.05);
+
+  /* Fonts */
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+
+  /* Layout — mobile first values, widened at the desktop breakpoint */
+  --page-max: 1280px;
+  --gutter: 16px;
+  --header-h: 70px;
+  --section-gap: 80px;
+  --radius-hero: 24px;
+  --radius-card: 24px;
+  --radius-pill: 100px;
+}
+
+@media (min-width: 900px) {
+  :root {
+    --gutter: 36px;
+    --header-h: 81px;
+    --section-gap: 100px;
+    --radius-hero: 40px;
+  }
+}
